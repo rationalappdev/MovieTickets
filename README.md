@@ -8,4 +8,4 @@ Read the full tutorial here http://rationalappdev.com/movie-tickets-booking-app-
 
 ## Demo
 
-<img src="https://github.com/rationalappdev/MovieTickets/blob/master/demo.gif" alt="Demo" width="375" />
+<img src="https://github.com/rationalappdev/MovieTickets/blob/master/demo.gif" alt="Demo" width="640" />
