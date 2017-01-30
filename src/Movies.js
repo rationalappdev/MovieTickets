@@ -57,7 +57,7 @@ export default class Movies extends Component {
       this.props.navigator.push({
         name: 'confirmation',
         // Generate random string
-        code: Math.random().toString(36).slice(20).toUpperCase(),
+        code: Math.random().toString(36).substring(6).toUpperCase(),
       });
     }
   }
