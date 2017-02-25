@@ -1,4 +1,8 @@
-const API = 'http://localhost:3000/v1';
+import { Platform } from 'react-native';
+
+const API = Platform.OS === 'android'
+  ? 'http://10.0.3.2:3000/v1' // works for Genymotion
+  : 'http://localhost:3000/v1';
 
 export const apiMiddleware = store => next => action => {
   // Pass all actions through by default
