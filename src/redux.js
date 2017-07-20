@@ -1,4 +1,6 @@
 import { Platform } from 'react-native';
+import { movies } from './data';
+const data = { movies };
 
 const API = Platform.OS === 'android'
   ? 'http://10.0.3.2:3000/v1' // works for Genymotion
@@ -11,7 +13,8 @@ export const apiMiddleware = store => next => action => {
     // In case we receive an action to send an API request
     case 'GET_MOVIE_DATA':
       // Dispatch GET_MOVIE_DATA_LOADING to update loading state
-      store.dispatch({type: 'GET_MOVIE_DATA_LOADING'});
+      store.dispatch({ type: 'GET_MOVIE_DATA_LOADING' });
+      /*
       // Make API call and dispatch appropriate actions when done
       fetch(`${API}/movies.json`)
         .then(response => response.json())
@@ -23,6 +26,9 @@ export const apiMiddleware = store => next => action => {
           type: 'GET_MOVIE_DATA_ERROR',
           error
         }));
+        */
+      // Set the movies array from local json 
+      next({ type: 'GET_MOVIE_DATA_RECEIVED', data });
       break;
     // Do nothing if the action does not interest us
     default:
@@ -46,5 +52,5 @@ export const reducer = (state = { movies: [], loading: true }, action) => {
       return state;
     default:
       return state;
-    }
+  }
 };
