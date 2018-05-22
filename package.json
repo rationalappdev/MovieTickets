@@ -7,8 +7,10 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "15.4.2",
-		"react-native": "0.40.0"
+		"moment": "^2.22.1",
+		"react": "16.3.1",
+		"react-native": "^0.55.4",	    
+		"react-native-navigation": "^1.1.462"
 	},
 	"devDependencies": {
 		"babel-jest": "18.0.0",

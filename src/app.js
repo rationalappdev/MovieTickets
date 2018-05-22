@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
-import {
-  Navigator,
-} from 'react-native';
+import { Navigation } from 'react-native-navigation';
 import Movies from './Movies';
 import Confirmation from './Confirmation';
 
-const RouteMapper = (route, navigator) => {
-  if (route.name === 'movies') {
-    return (
-      <Movies navigator={navigator} />
-    );
-  } else if (route.name === 'confirmation') {
-    return (
-      <Confirmation code={route.code} navigator={navigator} />
-    );
-  }
-};
+Navigation.registerComponent('Movies.Confirmation', () => Confirmation);
+Navigation.registerComponent('Movies.Main', () => Movies);
 
-export default class App extends Component {
-  render() {
-    return (
-      <Navigator
-        // Default to movies route
-        initialRoute={{ name: 'movies' }}
-        // Use FloatFromBottom transition between screens
-        configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
-        // Pass a route mapper functions
-        renderScene={RouteMapper}
-      />
-    );
-  }
-}
+Navigation.startSingleScreenApp({
+  screen: {
+    screen: 'Movies.Main', // unique ID registered with Navigation.registerScreen 
+    navigatorStyle: {
+      navBarHidden: true
+    }, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+    navigatorButtons: {} // override the nav buttons for the screen, see "Adding buttons to the navigator" below (optional)
+  },
+  passProps: {}, // simple serializable object that will pass as props to all top screens (optional)
+  animationType: 'slide-up'
+});
+
+
